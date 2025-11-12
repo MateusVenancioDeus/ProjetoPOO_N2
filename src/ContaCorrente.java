@@ -1,28 +1,56 @@
 public class ContaCorrente extends ContaBancaria implements OperacoesBancarias {
-    private static final double TAXA = 0.005;
 
-    public ContaCorrente(int numero, String titular, double saldoInicial) {
-        super(numero, titular, saldoInicial);
+    public ContaCorrente(int numero, String titular, double saldo) {
+        super(numero, titular, saldo);
     }
 
-    @Override
     public void atualizarSaldo() {
-        double novoSaldo = getSaldo() - (getSaldo() * TAXA);
-        setSaldo(novoSaldo);
+        try {
+            double taxa = getSaldo() * 0.005;
+            sacar(taxa);
+            System.out.println("💼 Taxa de manutenção de 0,5% aplicada à conta de " + getTitular() + ". Valor descontado: R$" + String.format("%.2f", taxa) + ". Saldo atualizado: R$" + String.format("%.2f", getSaldo()));
+        } catch (SaldoInsuficienteException e) {
+            System.err.println("❌ Erro ao aplicar taxa de manutenção: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("⚠️ Erro inesperado ao atualizar saldo: " + e.getMessage());
+        }
     }
 
     @Override
-    public void transferir(ContaBancaria destino, double valor) throws SaldoInsuficienteException {
-        this.sacar(valor);
-        destino.depositar(valor);
+    public void transferir(ContaBancaria destino, double valor) {
+        try {
+            System.out.println("\n---- ÁREA DE TRANSFERÊNCIA (CONTA CORRENTE) ----");
+
+            if (valor <= 0) {
+                System.out.println("Valor inválido! A transferência deve ser maior que zero.");
+            } else if (valor > getSaldo()) {
+                System.out.println("Saldo insuficiente para transferir R$" + valor);
+            } else {
+                setSaldo(getSaldo() - valor);
+                destino.setSaldo(destino.getSaldo() + valor);
+
+                System.out.println("Transferência de R$" + valor + " feita com sucesso!");
+                System.out.println("Conta de origem: " + getTitular() + " (Conta Corrente)");
+                System.out.println("Conta de destino: " + destino.getTitular() + " (" + destino.getClass().getSimpleName() + ")");
+                System.out.println("Saldo atual da origem: R$" + getSaldo());
+            }
+
+            System.out.println("-----------------------------------------------");
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer a transferência.");
+        }
     }
 
     @Override
     public void imprimirExtrato() {
-        System.out.println("--- Recibo Conta Corrente ---");
-        System.out.println("Titular: " + getTitular());
-        System.out.println("Número: " + getNumero());
-        System.out.println("Saldo: " + getSaldo());
-        System.out.println("-------------------------------");
+        try {
+            System.out.println("\n---- Extrato da Conta Corrente ----");
+            System.out.println("Titular: " + getTitular());
+            System.out.println("Número: " + getNumero());
+            System.out.println("Saldo final: R$" + String.format("%.2f", getSaldo()));
+            System.out.println("-----------------------------------");
+        } catch (Exception e) {
+            System.err.println("⚠️Erro ao imprimir extrato: " + e.getMessage());
+        }
     }
 }
