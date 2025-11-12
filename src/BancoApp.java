@@ -1,9 +1,9 @@
-public class Banco {
+public class BancoApp {
     public static void main(String[] args) {
         try {
             System.out.println("☕Bem vindo ao Banco Jalva!☕ \n");
 
-            ContaCorrente conta_corrente = new ContaCorrente(1, "Alice", 1000);
+            ContaCorrente conta_corrente = new ContaCorrente(1, "Mateus Vitor", 1000);
             ContaPoupanca conta_poupanca = new ContaPoupanca(2, "Bob", 500);
 
             //Depositar

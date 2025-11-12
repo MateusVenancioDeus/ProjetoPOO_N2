@@ -19,10 +19,10 @@ public class ContaPoupanca extends ContaBancaria implements OperacoesBancarias {
 
     @Override
     public void imprimirExtrato() {
-        System.out.println("=== Recibo Conta Poupança ===");
+        System.out.println("--- Recibo Conta Poupança ---");
         System.out.println("Titular: " + getTitular());
         System.out.println("Número: " + getNumero());
         System.out.println("Saldo: " + getSaldo());
-        System.out.println("==============================");
+        System.out.println("-------------------------------");
     }
 }
