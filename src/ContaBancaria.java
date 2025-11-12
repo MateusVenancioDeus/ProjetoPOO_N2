@@ -48,7 +48,7 @@ public abstract class ContaBancaria {
             } else {
                 saldo = saldo - valor;
                 System.out.println("Saque de R$" + valor + " feito com sucesso!");
-                System.out.println("Saldo atual: R$" + saldo);
+                System.out.println("Saldo atual: R$" + String.format("%.2f", saldo));
             }
         } catch (SaldoInsuficienteException e) {
             System.out.println("Erro: " + e.getMessage());

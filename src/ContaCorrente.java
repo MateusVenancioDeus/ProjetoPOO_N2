@@ -4,15 +4,14 @@ public class ContaCorrente extends ContaBancaria implements OperacoesBancarias {
         super(numero, titular, saldo);
     }
 
+    @Override
     public void atualizarSaldo() {
         try {
-            double taxa = getSaldo() * 0.005;
-            sacar(taxa);
-            System.out.println("💼 Taxa de manutenção de 0,5% aplicada à conta de " + getTitular() + ". Valor descontado: R$" + String.format("%.2f", taxa) + ". Saldo atualizado: R$" + String.format("%.2f", getSaldo()));
-        } catch (SaldoInsuficienteException e) {
-            System.err.println("❌ Erro ao aplicar taxa de manutenção: " + e.getMessage());
+            double taxa = getSaldo() * 0.005; // 0,5%
+            setSaldo(getSaldo() - taxa);
+            System.out.println("💼Taxa de manutenção de 0,5% aplicada à conta Corrente de " + getTitular() + ". \n Valor da taxa: R$" + String.format("%.2f", taxa));
         } catch (Exception e) {
-            System.err.println("⚠️ Erro inesperado ao atualizar saldo: " + e.getMessage());
+            System.out.println("Erro ao aplicar taxa de manutenção.");
         }
     }
 
@@ -32,7 +31,9 @@ public class ContaCorrente extends ContaBancaria implements OperacoesBancarias {
                 System.out.println("Transferência de R$" + valor + " feita com sucesso!");
                 System.out.println("Conta de origem: " + getTitular() + " (Conta Corrente)");
                 System.out.println("Conta de destino: " + destino.getTitular() + " (" + destino.getClass().getSimpleName() + ")");
+                System.out.println("Valor descontado da conta origem: R$" + valor);
                 System.out.println("Saldo atual da origem: R$" + getSaldo());
+                System.out.println("Saldo atual da destino: R$" + destino.getSaldo());
             }
 
             System.out.println("-----------------------------------------------");
