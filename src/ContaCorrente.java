@@ -18,7 +18,7 @@ public class ContaCorrente extends ContaBancaria implements OperacoesBancarias {
     @Override
     public void transferir(ContaBancaria destino, double valor) {
         try {
-            System.out.println("\n---- ÁREA DE TRANSFERÊNCIA (CONTA CORRENTE) ----");
+            System.out.println("\n---- \uD83C\uDFE6ÁREA DE TRANSFERÊNCIA (CONTA CORRENTE)\uD83C\uDFE6 ----");
             if (valor <= 0) {
                 System.out.println("Valor inválido! A transferência deve ser maior que zero.");
             } else if (valor > getSaldo()) {
@@ -27,12 +27,15 @@ public class ContaCorrente extends ContaBancaria implements OperacoesBancarias {
                 setSaldo(getSaldo() - valor);
                 destino.setSaldo(destino.getSaldo() + valor);
 
-                System.out.println("Transferência de R$" + valor + " feita com sucesso!");
+                System.out.println("-----Informações das contas-----");
                 System.out.println("Conta de origem: " + getTitular() + " (Conta Corrente)");
-                System.out.println("Conta de destino: " + destino.getTitular() + " (" + destino.getClass().getSimpleName() + ")");
+                System.out.println("Conta de destino: " + destino.getTitular() + " (" + destino.getClass().getSimpleName() + ")\n");
+                System.out.println("-----Valor descontado-----");
                 System.out.println("Valor descontado da conta origem: R$" + valor);
-                System.out.println("Saldo atual da origem: R$" + getSaldo());
-                System.out.println("Saldo atual da destino: R$" + destino.getSaldo());
+                System.out.println("Transferência de R$" + valor + " feita com sucesso!\n");
+                System.out.println("-----Saldos das contas-----");
+                System.out.println("Saldo atual da Conta Origem: R$" + getSaldo());
+                System.out.println("Saldo atual da conta Destino: R$" + destino.getSaldo() );
             }
             System.out.println("-----------------------------------------------");
         } catch (Exception e) {

@@ -18,7 +18,10 @@ public class BancoApp {
             //Depósito
             System.out.println("\n---- DEPOSITO----");
             conta_corrente.depositar(100);
+            System.out.println("Deposito feito na conta de Mateus Vitor(Conta Corrente)!");
             conta_poupanca.depositar(200);
+            System.out.println("Deposito feito na conta de Bob Marley(Conta Poupanca)!");
+
             System.out.println("---------------------------------");
 
             //Transferência

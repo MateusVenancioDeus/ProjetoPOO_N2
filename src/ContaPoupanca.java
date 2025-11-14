@@ -19,7 +19,7 @@ public class ContaPoupanca extends ContaBancaria implements OperacoesBancarias {
     @Override
     public void transferir(ContaBancaria destino, double valor) {
         try {
-            System.out.println("\n---- ÁREA DE TRANSFERÊNCIA (CONTA POUPANÇA) ----");
+            System.out.println("\n---- \uD83D\uDCB0ÁREA DE TRANSFERÊNCIA (CONTA POUPANÇA)\uD83D\uDCB0 ----");
             if (valor <= 0) {
                 System.out.println("Valor inválido! A transferência deve ser maior que zero.");
             } else if (valor > getSaldo()) {
@@ -28,12 +28,15 @@ public class ContaPoupanca extends ContaBancaria implements OperacoesBancarias {
                 // Faz a transferência direta
                 setSaldo(getSaldo() - valor);
                     destino.setSaldo(destino.getSaldo() + valor);
-
-                System.out.println("Transferência de R$" + valor + " feita com sucesso!");
+                System.out.println("-----Informações das contas-----");
                 System.out.println("Conta de origem: " + getTitular() + " (Conta Poupança)");
-                System.out.println("Conta de destino: " + destino.getTitular() + " (" + destino.getClass().getSimpleName() + ")");
+                System.out.println("Conta de destino: " + destino.getTitular() + " (" + destino.getClass().getSimpleName() + ")\n");
+                System.out.println("-----Valor descontado-----");
                 System.out.println("Valor descontado da conta origem: R$" + valor);
+                System.out.println("Transferência de R$" + valor + " feita com sucesso!\n");
+                System.out.println("-----Saldos das contas-----");
                 System.out.println("Saldo atual da origem: R$" + getSaldo());
+                System.out.println("Saldo atual da conta destino: R$" + destino.getSaldo());
             }System.out.println("-----------------------------------------------");
         }catch (Exception e) {
             System.out.println("Erro ao realizar a transferência.");
