@@ -94,7 +94,7 @@ java src.ProjetoBanco
 
 Exemplo de saída esperada:
 
-<img width="457" height="319" alt="image" src="https://github.com/user-attachments/assets/e0415bf5-4ba6-4fd0-92e5-31f21447a624" />
+<img width="457" height="329" alt="image" src="https://github.com/user-attachments/assets/378f67ce-4630-4e41-99f3-4d5d3f3884ca" />
 
 ✅**Conceitos de POO aplicados**✅
 
