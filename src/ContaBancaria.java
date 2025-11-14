@@ -28,9 +28,9 @@ public abstract class ContaBancaria {
     public void depositar(double valor) {
         try {
             if (valor <= 0) {
-                System.out.println("Valor inválido! O depósito deve ser maior que zero.");
+                System.out.println("Esse Valor é inválido! O depósito deve ser maior que zero.");
             } else {
-                saldo = saldo + valor;
+                saldo += valor;
                 System.out.println("Depósito de R$" + valor + " feito com sucesso!");
                 System.out.println("Saldo atual: R$" + saldo);
             }
@@ -46,15 +46,12 @@ public abstract class ContaBancaria {
             } else if (valor > saldo) {
                 throw new SaldoInsuficienteException("Saldo insuficiente! Você tem apenas R$" + saldo);
             } else {
-                saldo = saldo - valor;
+                saldo -= valor;
                 System.out.println("Saque de R$" + valor + " feito com sucesso!");
                 System.out.println("Saldo atual: R$" + String.format("%.2f", saldo));
             }
         } catch (SaldoInsuficienteException e) {
             System.out.println("Erro: " + e.getMessage());
-            throw e;
-        } catch (Exception e) {
-            System.out.println("Erro inesperado ao sacar: " + e.getMessage());
         }
     }
 

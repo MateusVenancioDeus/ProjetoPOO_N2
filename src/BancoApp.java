@@ -6,8 +6,8 @@ public class BancoApp {
             System.out.println("☕ BEM VINDO AO BANCO JALVA! ☕");
 
             //Criação das contas
-            ContaCorrente conta_corrente = new ContaCorrente(1, "Mateus Vitor", 1000);
-            ContaPoupanca conta_poupanca = new ContaPoupanca(2, "Bob Marley", 5000);
+            ContaCorrente conta_corrente = new ContaCorrente(1, "Mateus Vitor", 100);
+            ContaPoupanca conta_poupanca = new ContaPoupanca(2, "Bob Marley", 200);
 
             //Saldo inicial
             System.out.println("\n---- SALDO INICIAL----");
@@ -17,8 +17,8 @@ public class BancoApp {
 
             //Depósito
             System.out.println("\n---- DEPOSITO----");
-            conta_corrente.depositar(200);
-            conta_poupanca.depositar(350);
+            conta_corrente.depositar(100);
+            conta_poupanca.depositar(200);
             System.out.println("---------------------------------");
 
             //Transferência
